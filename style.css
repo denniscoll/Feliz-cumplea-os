@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #3b767e;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sobre {
+  position: relative;
+  width: 340px;
+  height: 220px;
+  background: #e6e2e4;
+  border: 2px solid #888;
+  border-radius: 8px 8px 16px 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  overflow: visible;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(135deg, #e2d3b3 70%, #f5e9c6 100%);
+    border: 2px solid #888;
+    border-bottom: none;
+    border-radius: 0 0 170px 170px/0 0 110px 110px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    z-index: 4;
+    transform-origin: bottom center;
+    transition: 
+        transform 0.8s cubic-bezier(.68,-0.55,.27,1.55),
+        box-shadow 0.4s,
+        background 0.8s;
+    backface-visibility: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    /* Quita la animación de rebote para evitar conflicto visual */
+}
+
+.sobre.abierto .solapa {
+    transform: rotateX(-75deg); /* Levanta la solapa hacia arriba */
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+}
+
+.carta {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 88%;
+    height: 68%;
+    background: #53474d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 16px 16px;
+    padding: 20px;
+    z-index: 1;
+    transition: top 0.8s ease 0.8s;
+}
+
+/* Eleva más la carta al abrir */
+.sobre.abierto .carta {
+    top: -40%;
+}
+
+/* Al abrir */
+.sobre.abierto .solapa {
+  transform: translateY(-10px); /* La levanta hacia arriba */
+
+}
+
+.sobre.abierto .carta {
+  top: 0;
+}
